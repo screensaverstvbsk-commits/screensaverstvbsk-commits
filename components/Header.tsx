@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { Menu, X, Phone } from 'lucide-react';
 import { CONTACT_INFO } from '../constants';
@@ -22,7 +24,7 @@ export const Header: React.FC = () => {
           
           {/* Logo */}
           <div className="flex items-center cursor-pointer" onClick={() => window.scrollTo(0,0)}>
-            <Logo className="h-12 w-12 mr-3" />
+            <Logo className="h-16 w-16 mr-3" />
             <div className="flex flex-col">
               <span className="text-xl font-bold text-slate-900 leading-tight">Screen Savers</span>
               <span className="text-xs text-slate-500 font-semibold tracking-wider">TV REPAIR BANGALORE</span>
