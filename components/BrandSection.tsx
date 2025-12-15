@@ -4,28 +4,28 @@ export const BrandSection: React.FC = () => {
   const brands = [
     { 
       name: "Sony", 
-      logo: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Sony_logo.svg",
-      heightClass: "h-6 md:h-8" 
+      logo: "https://cdn.svgporn.com/logos/sony.svg",
+      className: "h-8 md:h-10" 
     },
     { 
       name: "Samsung", 
-      logo: "https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg",
-      heightClass: "h-8 md:h-10" 
+      logo: "https://cdn.svgporn.com/logos/samsung.svg",
+      className: "h-6 md:h-8" // Samsung is wide, so slightly shorter height balances it
     },
     { 
       name: "LG", 
-      logo: "https://upload.wikimedia.org/wikipedia/commons/b/bf/LG_logo_%282015%29.svg",
-      heightClass: "h-10 md:h-12" 
+      logo: "https://cdn.svgporn.com/logos/lg.svg",
+      className: "h-10 md:h-12" 
     },
     { 
       name: "Panasonic", 
-      logo: "https://upload.wikimedia.org/wikipedia/commons/0/07/Panasonic_logo_%28Blue%29.svg",
-      heightClass: "h-6 md:h-8" 
+      logo: "https://cdn.svgporn.com/logos/panasonic.svg",
+      className: "h-6 md:h-8" 
     },
     { 
       name: "OnePlus", 
-      logo: "https://upload.wikimedia.org/wikipedia/commons/f/f8/OnePlus_logo_2020.svg",
-      heightClass: "h-6 md:h-8" 
+      logo: "https://cdn.svgporn.com/logos/oneplus.svg",
+      className: "h-8 md:h-10" 
     }
   ];
 
@@ -47,8 +47,7 @@ export const BrandSection: React.FC = () => {
                 src={brand.logo} 
                 alt={`${brand.name} TV Repair`} 
                 loading="lazy"
-                referrerPolicy="no-referrer"
-                className={`w-auto max-w-full object-contain opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300 filter grayscale group-hover:grayscale-0 ${brand.heightClass}`}
+                className={`w-auto max-w-full object-contain filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300 ${brand.className}`}
               />
             </div>
           ))}
