@@ -45,8 +45,8 @@ export const Header: React.FC = () => {
             
             {/* Logo */}
             <div className="flex items-center cursor-pointer group" onClick={() => window.scrollTo(0,0)}>
-              {/* Increased logo size for better visibility */}
-              <Logo className="h-14 w-14 md:h-16 md:w-16 mr-3 transition-transform group-hover:scale-105" />
+              {/* Changed w-14/16 to w-auto to prevent squishing of rectangular logos */}
+              <Logo className="h-14 md:h-16 w-auto mr-3 transition-transform group-hover:scale-105" />
               <div className="flex flex-col justify-center">
                 <span className="text-xl md:text-2xl font-bold text-slate-900 leading-none mb-0.5">Screen Savers</span>
                 <span className="text-[10px] md:text-xs text-blue-600 font-bold tracking-widest uppercase leading-none">TV Repair Bangalore</span>
