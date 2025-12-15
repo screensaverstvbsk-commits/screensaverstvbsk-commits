@@ -17,11 +17,11 @@ export const Hero: React.FC = () => {
       {/* Background with overlay */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="https://images.unsplash.com/photo-1597424214711-2090b80fe4e9?auto=format&fit=crop&q=80&w=1920" 
+          src="https://images.unsplash.com/photo-1588508065123-287b28e013da?q=80&w=2574&auto=format&fit=crop" 
           alt="Professional TV and Electronics Repair Service" 
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-slate-900/85"></div>
+        <div className="absolute inset-0 bg-slate-900/90"></div>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left">
