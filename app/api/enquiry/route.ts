@@ -19,10 +19,9 @@ export async function POST(request: Request) {
 
     // Check for missing password (common cause of failure)
     if (!emailPass) {
-      console.error('Missing EMAIL_PASS environment variable. Emails cannot be sent.');
-      // Return 500 but don't expose secrets to client
+      console.error('❌ ERROR: Missing EMAIL_PASS environment variable.');
       return NextResponse.json(
-        { error: 'Server configuration error' },
+        { error: 'Server configuration error: Missing EMAIL_PASS' },
         { status: 500 }
       );
     }
@@ -35,6 +34,24 @@ export async function POST(request: Request) {
         pass: emailPass,
       },
     });
+
+    // Verify SMTP connection before attempting to send
+    try {
+      await transporter.verify();
+    } catch (verifyError) {
+      console.error('❌ SMTP Connection Failed:', verifyError);
+      
+      // Heuristic check for common password mistake (Regular password vs App Password)
+      // App passwords are 16 chars long. Regular passwords vary.
+      if (emailPass && emailPass.length < 16) {
+        console.warn('⚠️  HINT: The provided EMAIL_PASS appears to be a regular login password. Gmail requires an "App Password" (16 characters) if 2-Step Verification is enabled. Please generate one at https://myaccount.google.com/apppasswords');
+      }
+      
+      return NextResponse.json(
+        { error: 'Failed to connect to email service. Check server logs for details.' },
+        { status: 500 }
+      );
+    }
 
     // Email Content
     const mailOptions = {
@@ -85,10 +102,11 @@ export async function POST(request: Request) {
 
     // Send Email
     await transporter.sendMail(mailOptions);
+    console.log(`✅ Email sent successfully for enquiry: ${name}`);
 
     return NextResponse.json({ message: 'Enquiry sent successfully' }, { status: 200 });
   } catch (error) {
-    console.error('Failed to send email:', error);
+    console.error('❌ Failed to send email:', error);
     return NextResponse.json(
       { error: 'Failed to send enquiry' },
       { status: 500 }

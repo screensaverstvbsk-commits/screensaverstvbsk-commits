@@ -54,9 +54,12 @@ export const EnquiryForm: React.FC = () => {
       });
 
       if (!response.ok) {
-        console.warn('Email sending failed, but WhatsApp opened.');
-        // We generally don't show an error to the user if WhatsApp worked, 
-        // as the primary goal (contact) was achieved.
+        // Log detailed error for debugging
+        const errorData = await response.json().catch(() => ({}));
+        console.error('Email API Error:', errorData);
+        console.warn('Email sending failed, but WhatsApp opened. Check server logs.');
+      } else {
+        console.log('Email sent successfully');
       }
     } catch (error) {
       console.error('Error submitting form:', error);
