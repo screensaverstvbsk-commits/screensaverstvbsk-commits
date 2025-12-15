@@ -1,34 +1,32 @@
 import React from 'react';
 
 export const BrandSection: React.FC = () => {
-  // Using SimpleIcons CDN which is highly reliable for brand logos
-  // Color code 334155 matches slate-700 for a professional neutral look
-  const iconColor = "334155";
+  // Using SimpleIcons CDN without color parameters to fetch original brand colors
   
   const brands = [
     { 
       name: "Sony", 
-      logo: `https://cdn.simpleicons.org/sony/${iconColor}`,
-      className: "h-8 md:h-10" 
+      logo: "https://cdn.simpleicons.org/sony", // Official Black
+      className: "h-5 md:h-7" // Text logo needs to be slightly shorter to match visual weight
     },
     { 
       name: "Samsung", 
-      logo: `https://cdn.simpleicons.org/samsung/${iconColor}`,
+      logo: "https://cdn.simpleicons.org/samsung", // Official Blue
       className: "h-8 md:h-10" 
     },
     { 
       name: "LG", 
-      logo: `https://cdn.simpleicons.org/lg/${iconColor}`,
+      logo: "https://cdn.simpleicons.org/lg", // Official Red
       className: "h-10 md:h-12" 
     },
     { 
       name: "Panasonic", 
-      logo: `https://cdn.simpleicons.org/panasonic/${iconColor}`,
-      className: "h-8 md:h-10" 
+      logo: "https://cdn.simpleicons.org/panasonic", // Official Blue
+      className: "h-6 md:h-8" 
     },
     { 
       name: "OnePlus", 
-      logo: `https://cdn.simpleicons.org/oneplus/${iconColor}`,
+      logo: "https://cdn.simpleicons.org/oneplus", // Official Red
       className: "h-8 md:h-10" 
     }
   ];
