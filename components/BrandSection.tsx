@@ -1,34 +1,29 @@
 import React from 'react';
 
 export const BrandSection: React.FC = () => {
-  // Using SimpleIcons CDN with explicit color codes to ensure visibility on white background
-  // Sony is explicitly set to black (000000) to fix visibility issues
+  // Using SimpleIcons CDN with explicit color codes
+  // Sony is explicitly set to black (000000)
   
   const brands = [
     { 
       name: "Sony", 
-      logo: "https://cdn.simpleicons.org/sony/000000", // Force Black
-      className: "h-5 md:h-7" 
+      logo: "https://cdn.simpleicons.org/sony/000000", 
     },
     { 
       name: "Samsung", 
-      logo: "https://cdn.simpleicons.org/samsung/1428A0", // Official Blue
-      className: "h-8 md:h-10" 
+      logo: "https://cdn.simpleicons.org/samsung/1428A0", 
     },
     { 
       name: "LG", 
-      logo: "https://cdn.simpleicons.org/lg/A50034", // Official Red
-      className: "h-10 md:h-12" 
+      logo: "https://cdn.simpleicons.org/lg/A50034", 
     },
     { 
       name: "Panasonic", 
-      logo: "https://cdn.simpleicons.org/panasonic/0044BB", // Official Blue
-      className: "h-6 md:h-8" 
+      logo: "https://cdn.simpleicons.org/panasonic/0044BB", 
     },
     { 
       name: "OnePlus", 
-      logo: "https://cdn.simpleicons.org/oneplus/F50000", // Official Red
-      className: "h-8 md:h-10" 
+      logo: "https://cdn.simpleicons.org/oneplus/F50000", 
     }
   ];
 
@@ -40,20 +35,18 @@ export const BrandSection: React.FC = () => {
           <p className="mt-4 text-lg text-slate-600">Specialized expert service for major global TV brands.</p>
         </div>
 
-        {/* Removed card backgrounds (bg-slate-50, shadow) to show plain logos as requested */}
+        {/* Standardized height for all logos to "make them look similar size" */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-12 items-center justify-items-center">
           {brands.map((brand) => (
             <div 
               key={brand.name} 
-              className="flex items-center justify-center w-full group"
+              className="flex items-center justify-center w-full h-16 group"
             >
               <img 
                 src={brand.logo} 
                 alt={`${brand.name} TV Repair`} 
                 loading="lazy"
-                width={120}
-                height={60}
-                className={`w-auto max-w-[140px] object-contain transition-transform duration-300 group-hover:scale-110 ${brand.className}`}
+                className="h-8 md:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-110"
               />
             </div>
           ))}
