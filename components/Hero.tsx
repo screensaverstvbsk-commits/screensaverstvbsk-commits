@@ -13,16 +13,23 @@ export const Hero: React.FC = () => {
   };
 
   return (
-    <div className="relative pt-20 pb-16 md:pt-32 md:pb-24 overflow-hidden">
+    <div className="relative pt-20 pb-16 md:pt-32 md:pb-24 overflow-hidden bg-slate-900">
       {/* Background with overlay */}
       <div className="absolute inset-0 z-0">
-        {/* Updated image: Technician working on electronic circuit/panel */}
         <img 
           src="https://images.unsplash.com/photo-1597424214771-33792b0c96c4?q=80&w=2000&auto=format&fit=crop" 
           alt="Professional TV and Electronics Repair Service" 
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover opacity-40"
+          style={{ 
+            position: 'absolute', 
+            top: 0, 
+            left: 0, 
+            width: '100%', 
+            height: '100%', 
+            objectFit: 'cover' 
+          }}
         />
-        <div className="absolute inset-0 bg-slate-900/90"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900 to-slate-900/50"></div>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left">

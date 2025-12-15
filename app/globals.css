@@ -2,10 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Fallback Basic Reset */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
   font-family: 'Inter', sans-serif;
+  background-color: #f8fafc; /* slate-50 fallback */
+  color: #0f172a; /* slate-900 fallback */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ensure images don't overflow their containers by default */
+img, svg, video, canvas, audio, iframe, embed, object {
+  display: block;
+  vertical-align: middle;
+  max-width: 100%;
+}
+
+/* Fix for potential SVG overflow issues */
+svg {
+  overflow: hidden;
 }
