@@ -1,4 +1,2 @@
-// This file is deprecated and no longer used.
-// The project has been migrated to Next.js.
-// Please refer to next.config.mjs for configuration.
-export default {};
+// This file is disabled to prevent Vercel from incorrectly detecting this as a Vite project.
+// Please use next.config.mjs for configuration.

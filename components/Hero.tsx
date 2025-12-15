@@ -16,8 +16,9 @@ export const Hero: React.FC = () => {
     <div className="relative pt-20 pb-16 md:pt-32 md:pb-24 overflow-hidden">
       {/* Background with overlay */}
       <div className="absolute inset-0 z-0">
+        {/* Updated image: Technician working on electronic circuit/panel */}
         <img 
-          src="https://images.unsplash.com/photo-1588508065123-287b28e013da?q=80&w=2574&auto=format&fit=crop" 
+          src="https://images.unsplash.com/photo-1597424214771-33792b0c96c4?q=80&w=2000&auto=format&fit=crop" 
           alt="Professional TV and Electronics Repair Service" 
           className="w-full h-full object-cover"
         />
