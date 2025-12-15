@@ -1,37 +1,24 @@
 'use client';
 
 import React from 'react';
+import { Monitor, Wrench } from 'lucide-react';
 
 interface LogoProps {
   className?: string;
 }
 
 export const Logo: React.FC<LogoProps> = ({ className = "h-10 w-10" }) => {
-  // Use inline styles for dimensions as a safety net if Tailwind classes fail to load
-  const style = {
-    width: '100%',
-    height: '100%',
-    maxWidth: '64px', // Limit max width strictly
-    maxHeight: '64px'
-  };
-
   return (
-    <div className={`relative ${className} flex items-center justify-center overflow-hidden`}>
-      <svg
-        viewBox="0 0 100 120"
-        style={style}
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        preserveAspectRatio="xMidYMid meet"
-      >
-        <path
-          d="M50 115C50 115 90 95 90 35V15L50 5L10 15V35C10 95 50 115 50 115Z"
-          fill="#1e3a8a"
-          stroke="#3b82f6"
-          strokeWidth="3"
-        />
-        <text x="50" y="65" textAnchor="middle" fill="white" fontSize="10" fontFamily="sans-serif" fontWeight="bold">TV REPAIR</text>
-      </svg>
+    <div className={`relative ${className} flex-shrink-0 select-none`}>
+      {/* Main Container */}
+      <div className="w-full h-full bg-blue-600 rounded-xl flex items-center justify-center shadow-lg text-white relative z-0">
+        <Monitor className="w-[60%] h-[60%]" strokeWidth={2.5} />
+      </div>
+      
+      {/* Badge Overlay */}
+      <div className="absolute -bottom-1 -right-1 w-[45%] h-[45%] bg-white rounded-full flex items-center justify-center shadow-md border-2 border-slate-50 z-10">
+        <Wrench className="w-[60%] h-[60%] text-blue-600 fill-blue-100" strokeWidth={2} />
+      </div>
     </div>
   );
 };
