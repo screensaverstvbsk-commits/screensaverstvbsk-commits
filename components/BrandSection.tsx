@@ -1,30 +1,34 @@
 import React from 'react';
 
 export const BrandSection: React.FC = () => {
+  // Using SimpleIcons CDN which is highly reliable for brand logos
+  // Color code 334155 matches slate-700 for a professional neutral look
+  const iconColor = "334155";
+  
   const brands = [
     { 
       name: "Sony", 
-      logo: "https://cdn.svgporn.com/logos/sony.svg",
+      logo: `https://cdn.simpleicons.org/sony/${iconColor}`,
       className: "h-8 md:h-10" 
     },
     { 
       name: "Samsung", 
-      logo: "https://cdn.svgporn.com/logos/samsung.svg",
-      className: "h-6 md:h-8" // Samsung is wide, so slightly shorter height balances it
+      logo: `https://cdn.simpleicons.org/samsung/${iconColor}`,
+      className: "h-8 md:h-10" 
     },
     { 
       name: "LG", 
-      logo: "https://cdn.svgporn.com/logos/lg.svg",
+      logo: `https://cdn.simpleicons.org/lg/${iconColor}`,
       className: "h-10 md:h-12" 
     },
     { 
       name: "Panasonic", 
-      logo: "https://cdn.svgporn.com/logos/panasonic.svg",
-      className: "h-6 md:h-8" 
+      logo: `https://cdn.simpleicons.org/panasonic/${iconColor}`,
+      className: "h-8 md:h-10" 
     },
     { 
       name: "OnePlus", 
-      logo: "https://cdn.svgporn.com/logos/oneplus.svg",
+      logo: `https://cdn.simpleicons.org/oneplus/${iconColor}`,
       className: "h-8 md:h-10" 
     }
   ];
@@ -41,13 +45,15 @@ export const BrandSection: React.FC = () => {
           {brands.map((brand) => (
             <div 
               key={brand.name} 
-              className="flex items-center justify-center w-full h-32 p-6 bg-slate-50 rounded-2xl border border-slate-100 shadow-sm hover:shadow-lg hover:border-blue-100 hover:bg-white transition-all duration-300 group cursor-default"
+              className="flex items-center justify-center w-full h-32 p-6 bg-slate-50 rounded-2xl border border-slate-100 shadow-sm hover:shadow-lg hover:border-blue-100 hover:bg-white transition-all duration-300 group"
             >
               <img 
                 src={brand.logo} 
                 alt={`${brand.name} TV Repair`} 
                 loading="lazy"
-                className={`w-auto max-w-full object-contain filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300 ${brand.className}`}
+                width={100}
+                height={50}
+                className={`w-auto max-w-full object-contain transition-transform duration-300 group-hover:scale-110 ${brand.className}`}
               />
             </div>
           ))}

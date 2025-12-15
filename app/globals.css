@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Fallback Basic Reset */
+/* Base styles and resets */
 * {
   box-sizing: border-box;
 }
@@ -19,21 +19,17 @@ html {
 }
 
 body {
-  font-family: 'Inter', sans-serif;
-  background-color: #f8fafc; /* slate-50 fallback */
-  color: #0f172a; /* slate-900 fallback */
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: #f8fafc; /* slate-50 */
+  color: #0f172a; /* slate-900 */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Ensure images don't overflow their containers by default */
-img, svg, video, canvas, audio, iframe, embed, object {
+/* Ensure images behave responsively */
+img, svg {
   display: block;
   vertical-align: middle;
   max-width: 100%;
-}
-
-/* Fix for potential SVG overflow issues */
-svg {
-  overflow: hidden;
+  height: auto;
 }
