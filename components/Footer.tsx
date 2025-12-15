@@ -2,10 +2,11 @@ import React from 'react';
 import { Phone, Mail, MapPin } from 'lucide-react';
 import { CONTACT_INFO } from '../constants';
 import { Logo } from './Logo';
+import { InstallPWA } from './InstallPWA';
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-slate-900 text-white pt-12 pb-8">
+    <footer className="bg-slate-900 text-white pt-12 pb-24 md:pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 border-b border-slate-800 pb-8">
           
@@ -28,6 +29,9 @@ export const Footer: React.FC = () => {
               <li><a href="#brands" className="hover:text-blue-400 transition-colors">Supported Brands</a></li>
               <li><a href="#why-us" className="hover:text-blue-400 transition-colors">Why Choose Us</a></li>
               <li><a href="#book-now" className="hover:text-blue-400 transition-colors">Book a Repair</a></li>
+              <li className="pt-2">
+                <InstallPWA variant="link" className="text-blue-400 hover:text-blue-300" />
+              </li>
             </ul>
           </div>
 

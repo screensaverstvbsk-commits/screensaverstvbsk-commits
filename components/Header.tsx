@@ -5,6 +5,7 @@ import { Menu, X, Phone } from 'lucide-react';
 import { CONTACT_INFO } from '../constants';
 import { Button } from './ui/Button';
 import { Logo } from './Logo';
+import { InstallPWA } from './InstallPWA';
 
 interface HeaderProps {
   onBookNow: () => void;
@@ -78,6 +79,9 @@ export const Header: React.FC<HeaderProps> = ({ onBookNow }) => {
             <button onClick={() => scrollToSection('brands')} className="block w-full text-left px-4 py-3 text-lg font-medium text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded-lg">Brands</button>
             <button onClick={() => scrollToSection('why-us')} className="block w-full text-left px-4 py-3 text-lg font-medium text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded-lg">Why Us</button>
             
+            {/* Install App Button for Mobile */}
+            <InstallPWA variant="menuItem" />
+
             <div className="pt-6 mt-4 border-t border-slate-100 px-2">
               <Button fullWidth onClick={() => { setIsMenuOpen(false); onBookNow(); }} className="py-4 text-lg shadow-lg">
                 Book Service
