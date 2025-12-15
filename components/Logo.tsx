@@ -9,12 +9,15 @@ interface LogoProps {
 export const Logo: React.FC<LogoProps> = ({ className = "h-10 w-auto" }) => {
   return (
     <img 
-      src="/logo.png?v=1" 
+      src="/images/logo.png" 
       alt="Screen Savers Logo" 
       className={`${className} object-contain`}
       onError={(e) => {
-        console.error("Error loading logo. Please ensure 'logo.png' exists in the 'public' folder at the root of your project.");
-        e.currentTarget.style.display = 'none'; // Hide broken image icon
+        const target = e.currentTarget;
+        // Fallback: if /images/logo.png fails, try /logo.png
+        if (target.src.includes('/images/logo.png')) {
+          target.src = '/logo.png';
+        }
       }}
     />
   );
