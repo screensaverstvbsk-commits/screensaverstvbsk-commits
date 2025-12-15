@@ -47,7 +47,8 @@ export const Header: React.FC = () => {
             <div className="flex items-center cursor-pointer group" onClick={() => window.scrollTo(0,0)}>
               {/* Added flex-shrink-0 to prevent logo squashing */}
               <div className="flex-shrink-0 mr-3">
-                <Logo className="h-14 md:h-16 w-auto transition-transform group-hover:scale-105" />
+                {/* Increased size slightly to h-16/h-20 for better visibility of shield details */}
+                <Logo className="h-16 md:h-20 w-auto transition-transform group-hover:scale-105" />
               </div>
               <div className="flex flex-col justify-center">
                 <span className="text-xl md:text-2xl font-bold text-slate-900 leading-none mb-0.5">Screen Savers</span>

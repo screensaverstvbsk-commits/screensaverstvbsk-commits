@@ -5,6 +5,11 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Screen Savers TV Repair - Bangalore",
   description: "Expert TV Repair Services in Bangalore. Fast, reliable doorstep repair for Sony, LG, Samsung and more.",
+  icons: {
+    icon: '/images/Logo.png', // Uses the uploaded logo as favicon
+    shortcut: '/images/Logo.png',
+    apple: '/images/Logo.png',
+  }
 };
 
 export default function RootLayout({
