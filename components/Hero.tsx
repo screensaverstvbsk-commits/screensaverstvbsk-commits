@@ -3,6 +3,7 @@
 import React from 'react';
 import { Button } from './ui/Button';
 import { CheckCircle } from 'lucide-react';
+import { InstallPWA } from './InstallPWA';
 
 interface HeroProps {
   onBookNow: () => void;
@@ -39,11 +40,10 @@ export const Hero: React.FC<HeroProps> = ({ onBookNow }) => {
                 onClick={onBookNow} 
                 className="text-lg px-8 py-4 bg-blue-600 hover:bg-blue-500 border-none shadow-lg shadow-blue-900/50"
               >
-                Book Service Now
+                Book Service
               </Button>
-              <a href="#brands" className="inline-flex items-center justify-center px-6 py-3 border border-slate-600 text-base font-medium rounded-md text-slate-300 hover:bg-white/10 hover:text-white transition-colors">
-                View Supported Brands
-              </a>
+              {/* Added Install App Button */}
+              <InstallPWA variant="button" />
             </div>
 
             <div className="mt-10 flex flex-wrap gap-x-8 gap-y-4 justify-center lg:justify-start text-sm font-medium text-slate-400">

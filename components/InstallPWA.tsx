@@ -1,11 +1,11 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { Download, Share, PlusSquare } from 'lucide-react';
+import { Download, Share, PlusSquare, Smartphone } from 'lucide-react';
 import { Button } from './ui/Button';
 
 interface InstallPWAProps {
-  variant?: 'button' | 'link' | 'menuItem';
+  variant?: 'button' | 'link' | 'menuItem' | 'bottomNav';
   className?: string;
 }
 
@@ -19,18 +19,15 @@ export const InstallPWA: React.FC<InstallPWAProps> = ({ variant = 'button', clas
   useEffect(() => {
     setIsMounted(true);
     
-    // Check if already in standalone mode (installed)
     if (typeof window !== 'undefined') {
       const isStandaloneMode = window.matchMedia('(display-mode: standalone)').matches || 
                                (window.navigator as any).standalone;
       setIsStandalone(isStandaloneMode);
 
-      // Check if iOS
       const userAgent = window.navigator.userAgent.toLowerCase();
       const isIosDevice = /iphone|ipad|ipod/.test(userAgent);
       setIsIOS(isIosDevice);
 
-      // Listen for Android/Desktop install prompt
       const handleBeforeInstallPrompt = (e: any) => {
         e.preventDefault();
         setDeferredPrompt(e);
@@ -43,32 +40,29 @@ export const InstallPWA: React.FC<InstallPWAProps> = ({ variant = 'button', clas
 
   const handleInstallClick = async () => {
     if (deferredPrompt) {
-      // Android / Desktop Chrome
       deferredPrompt.prompt();
       const { outcome } = await deferredPrompt.userChoice;
       if (outcome === 'accepted') {
         setDeferredPrompt(null);
       }
     } else if (isIOS) {
-      // Show iOS instructions
       setShowIOSInstructions(true);
     } else {
-      // Fallback for desktop Safari/Firefox or if prompt unavailable
-      alert('To install this app, please use your browser menu (⋮ or Share icon) and select "Add to Home Screen" or "Install App".');
+      // Fallback: If no prompt is available (e.g. Firefox, or Chrome already dismissed it), show manual instructions
+      alert('To install this app:\n\n1. Tap your browser menu (⋮ or Share icon)\n2. Select "Add to Home Screen" or "Install App"');
     }
   };
 
   if (!isMounted || isStandalone) return null;
 
-  // Don't render anything if we can't install and it's not iOS
-  // (Unless we want to show it always, but usually we hide it if not installable)
-  if (!deferredPrompt && !isIOS) return null;
+  // We render the button even if deferredPrompt is null, so users always see the option 
+  // and get the alert instructions if the automatic prompt isn't ready.
 
   return (
     <>
       {variant === 'button' && (
-        <Button onClick={handleInstallClick} className={`${className} bg-slate-900 hover:bg-slate-800 text-white shadow-none`}>
-          <Download className="mr-2 h-4 w-4" /> Install App
+        <Button onClick={handleInstallClick} className={`${className} bg-slate-800 hover:bg-slate-700 text-white border-slate-700 shadow-lg`}>
+          <Download className="mr-2 h-4 w-4" /> Download App
         </Button>
       )}
 
@@ -77,7 +71,7 @@ export const InstallPWA: React.FC<InstallPWAProps> = ({ variant = 'button', clas
           onClick={handleInstallClick}
           className={`${className} flex items-center w-full px-4 py-3 text-lg font-medium text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded-lg transition-colors`}
         >
-          <Download className="mr-3 h-5 w-5" />
+          <Smartphone className="mr-3 h-5 w-5" />
           Install Mobile App
         </button>
       )}
@@ -89,6 +83,16 @@ export const InstallPWA: React.FC<InstallPWAProps> = ({ variant = 'button', clas
         >
           <Download className="mr-2 h-4 w-4" />
           Download Mobile App
+        </button>
+      )}
+
+      {variant === 'bottomNav' && (
+        <button 
+          onClick={handleInstallClick}
+          className="flex flex-col items-center justify-center w-full h-full text-slate-600 hover:text-blue-600 active:text-blue-600 space-y-1"
+        >
+          <Download className="h-6 w-6" />
+          <span className="text-[10px] font-medium">Install</span>
         </button>
       )}
       

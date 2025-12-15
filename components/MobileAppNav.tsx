@@ -3,6 +3,7 @@
 import React from 'react';
 import { Home, Phone, CalendarCheck, Tv } from 'lucide-react';
 import { CONTACT_INFO } from '../constants';
+import { InstallPWA } from './InstallPWA';
 
 interface MobileAppNavProps {
   onBookNow: () => void;
@@ -45,6 +46,9 @@ export const MobileAppNav: React.FC<MobileAppNavProps> = ({ onBookNow }) => {
             <Phone className="h-6 w-6" />
           </a>
         </div>
+
+        {/* New Install Button */}
+        <InstallPWA variant="bottomNav" />
 
         <button 
           onClick={onBookNow}
