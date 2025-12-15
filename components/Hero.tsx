@@ -1,29 +1,17 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Button } from './ui/Button';
 import { CheckCircle } from 'lucide-react';
-import { ContactModal } from './ContactModal';
 
-export const Hero: React.FC = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+interface HeroProps {
+  onBookNow: () => void;
+}
 
-  const scrollToBooking = () => {
-    const element = document.getElementById('book-now');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
+export const Hero: React.FC<HeroProps> = ({ onBookNow }) => {
   return (
     <div className="relative pt-24 pb-16 md:pt-36 md:pb-24 overflow-hidden bg-slate-900">
-      {/* Contact Modal */}
-      <ContactModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-        onScrollToForm={scrollToBooking}
-      />
-
+      
       {/* Background with overlay */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-slate-900/90 z-10"></div>
@@ -48,7 +36,7 @@ export const Hero: React.FC = () => {
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <Button 
-                onClick={() => setIsModalOpen(true)} 
+                onClick={onBookNow} 
                 className="text-lg px-8 py-4 bg-blue-600 hover:bg-blue-500 border-none shadow-lg shadow-blue-900/50"
               >
                 Book Service Now

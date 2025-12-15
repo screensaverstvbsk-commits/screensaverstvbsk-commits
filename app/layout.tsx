@@ -1,15 +1,29 @@
 import React from 'react';
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Screen Savers TV Repair - Bangalore",
   description: "Expert TV Repair Services in Bangalore. Fast, reliable doorstep repair for Sony, LG, Samsung and more.",
+  manifest: '/manifest.json',
   icons: {
-    icon: '/images/Logo.png', // Uses the uploaded logo as favicon
+    icon: '/images/Logo.png',
     shortcut: '/images/Logo.png',
     apple: '/images/Logo.png',
-  }
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: 'Screen Savers',
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: '#2563eb',
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false, // Feels more like an app
 };
 
 export default function RootLayout({
@@ -22,7 +36,9 @@ export default function RootLayout({
       <head>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
       </head>
-      <body className="bg-slate-50 text-slate-900 antialiased">{children}</body>
+      <body className="bg-slate-50 text-slate-900 antialiased pb-16 md:pb-0">
+        {children}
+      </body>
     </html>
   );
 }
