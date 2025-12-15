@@ -10,7 +10,7 @@ interface LogoProps {
 export const Logo: React.FC<LogoProps> = ({ className = "h-10 w-auto" }) => {
   return (
     <Image
-      src="/images/logo.png"
+      src="/logo.png"
       alt="Screen Savers TV Repair Logo"
       width={120}
       height={120}
