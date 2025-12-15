@@ -26,10 +26,9 @@ export const EnquiryForm: React.FC = () => {
     e.preventDefault();
     setStatus('loading');
 
-    // Simulate API delay for better UX
-    setTimeout(() => {
-      // 1. Construct WhatsApp Message
-      const message = `
+    // 1. WhatsApp Logic 
+    // We execute this immediately to prevent browser popup blockers from stopping the new tab
+    const whatsappMessage = `
 *New TV Repair Enquiry*
 ----------------
 *Name:* ${formData.name}
@@ -38,20 +37,33 @@ export const EnquiryForm: React.FC = () => {
 *Brand:* ${formData.brand}
 *Issue:* ${formData.issue}
 *Location:* Bangalore
-      `.trim();
+    `.trim();
 
-      const encodedMessage = encodeURIComponent(message);
-      const whatsappLink = `${WHATSAPP_URL_BASE}?text=${encodedMessage}`;
+    const encodedMessage = encodeURIComponent(whatsappMessage);
+    const whatsappLink = `${WHATSAPP_URL_BASE}?text=${encodedMessage}`;
+    window.open(whatsappLink, '_blank');
 
-      // 2. Open WhatsApp (This is the primary delivery mechanism for client-side)
-      window.open(whatsappLink, '_blank');
+    // 2. Email Logic (Background Process)
+    try {
+      const response = await fetch('/api/enquiry', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-      // 3. Show Success
+      if (!response.ok) {
+        console.warn('Email sending failed, but WhatsApp opened.');
+        // We generally don't show an error to the user if WhatsApp worked, 
+        // as the primary goal (contact) was achieved.
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    } finally {
+      // 3. Show Success Message regardless of email outcome (since WhatsApp opened)
       setStatus('success');
-      
-      // Reset form after 3 seconds, or keep success message visible
-      // setTimeout(() => setStatus('idle'), 5000);
-    }, 1500);
+    }
   };
 
   if (status === 'success') {
