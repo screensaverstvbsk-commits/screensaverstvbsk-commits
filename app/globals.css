@@ -33,3 +33,10 @@ img, svg {
   max-width: 100%;
   height: auto;
 }
+
+/* Mobile App Feel: Remove tap highlight on mobile */
+@media (max-width: 768px) {
+  button, a, input, select, textarea {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
