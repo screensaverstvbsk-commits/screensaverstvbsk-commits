@@ -1,0 +1,32 @@
+{
+  "name": "Screen Savers TV Repair",
+  "short_name": "Screen Savers",
+  "description": "Expert TV Repair Services in Bangalore. Doorstep service for Sony, LG, Samsung and more.",
+  "start_url": "/",
+  "id": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "orientation": "portrait",
+  "categories": ["business", "utilities", "productivity"],
+  "icons": [
+    {
+      "src": "/images/Logo.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/Logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/Logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

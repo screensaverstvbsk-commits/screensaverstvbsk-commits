@@ -1,0 +1,2 @@
+This file exists to ensure the 'public/images' folder is created in your repository.
+Please upload your 'logo.png' file into this directory.
