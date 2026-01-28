@@ -43,7 +43,7 @@ export async function GET(request: NextRequest) {
         }
 
         // Get repository details from environment or use defaults
-        const owner = process.env.GITHUB_OWNER || 'screensaverstvbsk-commits';
+        const owner = process.env.GITHUB_OWNER || 'Kumarbcom';
         const repo = process.env.GITHUB_REPO || 'screensaverstvbsk-commits';
         const perPage = parseInt(process.env.COMMITS_PER_PAGE || '30', 10);
 
